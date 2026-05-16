@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neptune Social Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --off: #f0ead8;
+  --off2: #e6dfc9;
+  --navy: #0b1928;
+  --navy2: #0f2336;
+  --gold: #b8923e;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--off); color: var(--navy); overflow-x: hidden; }
+
+/* NAV */
+nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.5rem 2.5rem;
+  border-bottom: 1px solid rgba(11,25,40,0.08);
+  position: sticky; top: 0; z-index: 100;
+  background: var(--off);
+}
+.nav-logo {
+  font-family: 'DM Sans', sans-serif; font-size: 0.7rem;
+  font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+}
+.nav-cta {
+  font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  background: var(--navy); color: var(--off);
+  border: none; padding: 0.75rem 1.6rem; cursor: pointer;
+}
+.nav-cta:hover { background: var(--navy2); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 2.5rem 2.5rem 5rem;
+  position: relative;
+}
+.hero-tag {
+  position: absolute; top: 2.5rem; left: 2.5rem;
+  font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold);
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(5.5rem, 13vw, 12rem);
+  font-weight: 900; line-height: 0.88; letter-spacing: -0.03em;
+  color: var(--navy);
+}
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero h1 .ghost {
+  -webkit-text-stroke: 2px rgba(11,25,40,0.15);
+  color: transparent;
+}
+.hero-foot {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-top: 3.5rem; padding-top: 2rem;
+  border-top: 1px solid rgba(11,25,40,0.1);
+}
+.hero-sub {
+  font-size: 1rem; line-height: 1.7; color: rgba(11,25,40,0.45);
+  font-weight: 300; max-width: 360px;
+}
+.hero-btns { display: flex; gap: 0.75rem; }
+.btn-dark {
+  font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  background: var(--navy); color: var(--off);
+  border: none; padding: 1rem 2rem; cursor: pointer;
+}
+.btn-dark:hover { background: var(--navy2); }
+.btn-line {
+  font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 400;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  background: transparent; color: var(--navy);
+  border: 1px solid rgba(11,25,40,0.2); padding: 1rem 2rem; cursor: pointer;
+}
+.btn-line:hover { border-color: rgba(11,25,40,0.5); }
+
+/* TICKER */
+.ticker {
+  overflow: hidden; background: var(--navy);
+  padding: 0.9rem 0;
+  border-top: 1px solid rgba(11,25,40,0.08);
+}
+.ticker-track {
+  display: flex; white-space: nowrap;
+  animation: tick 28s linear infinite;
+}
+.ticker-item {
+  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(240,234,216,0.3); padding: 0 2.5rem;
+  display: flex; align-items: center; gap: 2.5rem; flex-shrink: 0;
+}
+.ticker-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(240,234,216,0.18); flex-shrink: 0; }
+@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* SERVICES */
+.services { padding: 7rem 2.5rem; }
+.services-eyebrow {
+  font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(11,25,40,0.3); margin-bottom: 4rem;
+}
+.svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(11,25,40,0.1); }
+.svc-card {
+  padding: 3.5rem; background: var(--off); transition: background 0.3s;
+  display: flex; flex-direction: column;
+}
+.svc-card:hover { background: var(--off2); }
+.svc-card.dark { background: var(--navy); }
+.svc-card.dark:hover { background: var(--navy2); }
+
+.svc-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem; font-style: italic; font-weight: 900;
+  line-height: 1; margin-bottom: 2rem;
+}
+.svc-card:not(.dark) .svc-num { color: rgba(11,25,40,0.06); }
+.svc-card.dark .svc-num { color: rgba(240,234,216,0.05); }
+
+.svc-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+  font-weight: 900; line-height: 1.05; margin-bottom: 1.5rem;
+}
+.svc-card:not(.dark) .svc-name { color: var(--navy); }
+.svc-card.dark .svc-name { color: var(--off); }
+
+.svc-desc {
+  font-size: 0.88rem; line-height: 1.8; font-weight: 300;
+  margin-bottom: 2.5rem; flex: 1;
+}
+.svc-card:not(.dark) .svc-desc { color: rgba(11,25,40,0.45); }
+.svc-card.dark .svc-desc { color: rgba(240,234,216,0.4); }
+
+.svc-price {
+  font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+  margin-bottom: 2rem; display: block;
+}
+.svc-card:not(.dark) .svc-price { color: rgba(11,25,40,0.28); }
+.svc-card.dark .svc-price { color: rgba(240,234,216,0.25); }
+
+.svc-btn {
+  display: inline-block; font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; padding: 1rem 2rem;
+  cursor: pointer; border: none; align-self: flex-start;
+}
+.svc-btn.on-light { background: var(--navy); color: var(--off); }
+.svc-btn.on-light:hover { background: var(--navy2); }
+.svc-btn.on-dark { background: var(--off); color: var(--navy); }
+.svc-btn.on-dark:hover { background: var(--off2); }
+
+/* CLOSER */
+.closer {
+  background: var(--navy); color: var(--off);
+  padding: 10rem 2.5rem 8rem; text-align: center;
+}
+.closer h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(4rem, 12vw, 11rem);
+  font-weight: 900; line-height: 0.88;
+  letter-spacing: -0.035em; margin-bottom: 3rem;
+}
+.closer h2 em { font-style: italic; color: var(--gold); }
+.closer h2 .ghost-light {
+  -webkit-text-stroke: 2px rgba(240,234,216,0.15);
+  color: transparent;
+}
+.closer-sub {
+  font-size: 0.95rem; color: rgba(240,234,216,0.4);
+  max-width: 380px; margin: 0 auto 3rem;
+  line-height: 1.8; font-weight: 300;
+}
+.closer-btns { display: flex; gap: 1rem; justify-content: center; }
+.btn-off {
+  font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  background: var(--off); color: var(--navy);
+  border: none; padding: 1rem 2.2rem; cursor: pointer;
+}
+.btn-off:hover { background: var(--off2); }
+.btn-off-ghost {
+  font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 400;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  background: transparent; color: var(--off);
+  border: 1px solid rgba(240,234,216,0.2); padding: 1rem 2.2rem; cursor: pointer;
+}
+.btn-off-ghost:hover { border-color: rgba(240,234,216,0.5); }
+
+/* FOOTER */
+footer {
+  background: var(--off2);
+  border-top: 1px solid rgba(11,25,40,0.07);
+  padding: 3rem 2.5rem 2rem;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.ft-logo {
+  font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--navy);
+}
+.ft-links { display: flex; gap: 2rem; }
+.ft-links a {
+  font-size: 0.72rem; color: rgba(11,25,40,0.38);
+  text-decoration: none; letter-spacing: 0.06em;
+}
+.ft-links a:hover { color: var(--navy); }
+.ft-copy { font-size: 0.62rem; color: rgba(11,25,40,0.22); letter-spacing: 0.04em; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Neptune Social Studio</div>
+  <button class="nav-cta" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Book a session</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-tag">Social · Marketing · Psychology</div>
+  <h1>
+    Make them<br>
+    <em>feel</em><br>
+    <span class="ghost">something.</span>
+  </h1>
+  <div class="hero-foot">
+    <p class="hero-sub">Consumer psychology meets social media strategy. For brands that want to be remembered.</p>
+    <div class="hero-btns">
+      <button class="btn-dark" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Book a session</button>
+      <button class="btn-line" onclick="document.getElementById('audit').scrollIntoView({behavior:'smooth'})">Get an audit</button>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <div class="ticker-item">Social media strategy<span class="ticker-dot"></span></div>
+    <div class="ticker-item">Consumer psychology<span class="ticker-dot"></span></div>
+    <div class="ticker-item">Brand audits<span class="ticker-dot"></span></div>
+    <div class="ticker-item">1:1 coaching<span class="ticker-dot"></span></div>
+    <div class="ticker-item">Content direction<span class="ticker-dot"></span></div>
+    <div class="ticker-item">Marketing psychology<span class="ticker-dot"></span></div>
+    <div class="ticker-item">Growth strategy<span class="ticker-dot"></span></div>
+    <div class="ticker-item">Social media strategy<span class="ticker-dot"></span></div>
+    <div class="ticker-item">Consumer psychology<span class="ticker-dot"></span></div>
+    <div class="ticker-item">Brand audits<span class="ticker-dot"></span></div>
+    <div class="ticker-item">1:1 coaching<span class="ticker-dot"></span></div>
+    <div class="ticker-item">Content direction<span class="ticker-dot"></span></div>
+    <div class="ticker-item">Marketing psychology<span class="ticker-dot"></span></div>
+    <div class="ticker-item">Growth strategy<span class="ticker-dot"></span></div>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="services-eyebrow">Work with me</div>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <div class="svc-num">01</div>
+      <h3 class="svc-name">1:1 Coaching Session</h3>
+      <p class="svc-desc">A 60-minute strategy call built around your brand and your audience's psychology. Walk away with a clear, actionable plan.</p>
+      <span class="svc-price">From $197 · 60 min · Zoom</span>
+      <button class="svc-btn on-light">Book a session &rarr;</button>
+    </div>
+    <div class="svc-card dark" id="audit">
+      <div class="svc-num">02</div>
+      <h3 class="svc-name">Social Media Audit</h3>
+      <p class="svc-desc">A full review of your social presence — what's working, what isn't, and exactly what to fix. Delivered as a written report.</p>
+      <span class="svc-price">From $97 · 5 business days</span>
+      <button class="svc-btn on-dark">Request an audit &rarr;</button>
+    </div>
+  </div>
+</section>
+
+<section class="closer">
+  <h2>
+    Every post<br>
+    is a <em>trust</em><br>
+    <span class="ghost-light">decision.</span>
+  </h2>
+  <p class="closer-sub">Let's build a strategy rooted in how people actually think, feel, and decide to buy.</p>
+  <div class="closer-btns">
+    <button class="btn-off">Book a coaching session</button>
+    <button class="btn-off-ghost">Request an audit</button>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-logo">Neptune Social Studio</div>
+  <div class="ft-links">
+    <a href="#">Instagram</a>
+    <a href="#">LinkedIn</a>
+    <a href="#">hello@neptunesocialstudio.com</a>
+  </div>
+  <span class="ft-copy">&copy; 2026 Neptune Social Studio</span>
+</footer>
+
+</body>
+</html>
